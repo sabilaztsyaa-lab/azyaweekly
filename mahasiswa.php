@@ -1,21 +1,8 @@
 <?php
+require 'fungsi.php'; // Menggunakan koneksi & fungsi yang sama dengan file lain (dulu file ini punya koneksi sendiri yang berbeda)
 
-$koneksi = mysqli_connect("localhost", "root" , "",
-"ropweekly");
-
-$query = "SELECT *  FROM  mahasiswa";
-
-$result = mysqli_query($koneksi, $query); ///lemari
-
-//ambil data (fetch) mahasiswa dari object result
-//mysqli_fetch_row() -> mengembalikan array numerik
-//mysqli_fetch_assoc() -> mengembalikan array associative
-//mysqli_fetch_array() -> mengembalikan keduanya
-//mysqli_fetch_object() -> mengembalikan object
-//while ($mhs = mysqli_fetch_assoc($result)) {
-    //var_dump($mhs);
-    //echo $mhs["nama"];
-
+$query = "SELECT * FROM mahasiswa";
+$data = tampildata($query); // Menggunakan fungsi tampildata() dari fungsi.php, bukan while(mysqli_fetch_assoc()) manual
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +14,7 @@ $result = mysqli_query($koneksi, $query); ///lemari
     </head>
     <body>
         <h1 align="center">
-            Data Mahasiswa
+            Data mahasiswadata
         </h1>
         <table border="1" align="center" cellspacing="0" cellpadding="10px">
             <tr>
@@ -41,7 +28,7 @@ $result = mysqli_query($koneksi, $query); ///lemari
                 <a href="contact.php">Contact</a>
             </td>
             <td>
-                <a href="mhasiswadata.php">Data Mahasiswa</a>
+                <a href="mahasiswadata.php">Data mahasiswadata</a>
             </td>
             <td>
                 <a href="latihan.php">Latihan</a>
@@ -54,11 +41,12 @@ $result = mysqli_query($koneksi, $query); ///lemari
             <br><br>
 
             <a href="tambahdata.php"><button>Tambah Data</button></a>
-    
+
+    <div class="content-wrapper">
     <h2>
-        Data Mahasiswa
+        Data mahasiswadata
     </h2>
-    
+
     <table border="1" cellpadding="5px">
         <tr>
             <th>No</th>
@@ -71,12 +59,12 @@ $result = mysqli_query($koneksi, $query); ///lemari
             <th>Aksi</th>
         </tr>
         <?php
-        $no = 1; // 1. Membuat variabel nomor urut
-        while($mhs = mysqli_fetch_assoc($result))
-        {
+        $no = 1;
+        foreach ($data as $mhs) {
         ?>
             <tr>
-                <td><?php echo $no++; ?></td> <td><?php echo $mhs["nama"]?></td>
+                <td><?php echo $no++; ?></td>
+                <td><?php echo $mhs["nama"]?></td>
                 <td><?php echo $mhs["nim"]?></td>
                 <td><?= $mhs["prodi"]; ?></td>
                 <td><?= $mhs["email"]; ?></td>
@@ -85,8 +73,8 @@ $result = mysqli_query($koneksi, $query); ///lemari
                     <img src="images/<?= $mhs['foto']; ?>" width="45px" height="auto">
                 </td>
                 <td>
-                    <a href="edit.php?id=<?= $mhs['id']; ?>">Edit</a> | 
-                    <a href="hapus.php?id=<?= $mhs['id']; ?>" onclick="return confirm('Yakin hapus?')">Hapus</a>
+                    <a href="editdata.php?id=<?= $mhs['id']; ?>">Edit</a> |
+                    <a href="hapusdata.php?id=<?= $mhs['id']; ?>" onclick="return confirm('Yakin hapus?')">Hapus</a>
                 </td>
             </tr>
         <?php

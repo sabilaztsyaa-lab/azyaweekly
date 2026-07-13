@@ -17,7 +17,7 @@
             <td><a href="index.php">Home</a></td>
             <td><a href="profile.php">Profile</a></td>
             <td><a href="contact.php">Contact</a></td>
-            <td><a href="mhasiswadata.php">Data Mahasiswa</a></td>
+            <td><a href="mahasiswadata.php">Data mahasiswadata</a></td>
             <td><a href="latihan.php">Latihan</a></td>
             <td><a href="form.php">Form</a></td>
         </tr>

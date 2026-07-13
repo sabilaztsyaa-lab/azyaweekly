@@ -21,7 +21,7 @@
                 <a href="contact.php">Contact</a>
             </td>
             <td>
-                <a href="mhasiswadata.php">Data Mahasiswa</a>
+                <a href="mahasiswa.php">Data mahasiswa</a>
             </td>
             <td>
                 <a href="latihan.php">Latihan</a>

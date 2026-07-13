@@ -23,7 +23,7 @@
                 <a href="contact.php">Contact</a>
             </td>
             <td>
-                <a href="mhasiswadata.php">Data Mahasiswa</a>
+                <a href="mahasiswadata.php">Data mahasiswadata</a>
             </td>
             <td>
                 <a href="latihan.php">Latihan</a>
